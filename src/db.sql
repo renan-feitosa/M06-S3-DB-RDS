@@ -1,15 +1,18 @@
--- Utilizando MySQL
+-- Criando e entrando no banco de dados
 
 CREATE DATABASE IF NOT EXISTS `db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE `db`;
+
+
+-- Criando as tabelas
 
 CREATE TABLE IF NOT EXISTS `Paciente` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(50) NOT NULL,
     `idade` INT NOT NULL,
     PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE IF NOT EXISTS `Unidade_Saude` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -17,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `Unidade_Saude` (
     `endereco` VARCHAR(100) NOT NULL,
     `tipo` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE IF NOT EXISTS `Medico` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `Medico` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_unidade`) REFERENCES `Unidade_Saude`(`id`)
 
-)
+);
 
 CREATE TABLE IF NOT EXISTS `Veiculo` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -36,14 +39,15 @@ CREATE TABLE IF NOT EXISTS `Veiculo` (
     `id_unidade` INT NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_unidade`) REFERENCES `Unidade_Saude`(`id`)
-)
+);
 
 CREATE TABLE IF NOT EXISTS `Produto` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(50) NOT NULL,
     `tipo` VARCHAR(50) NOT NULL,
     `descricao` VARCHAR(255) NOT NULL,
-)
+    PRIMARY KEY (`id`)
+);
 
 CREATE TABLE IF NOT EXISTS `Estoque` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -53,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `Estoque` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_unidade`) REFERENCES `Unidade_Saude`(`id`),
     FOREIGN KEY (`id_produto`) REFERENCES `Produto`(`id`)
-)
+);
 
 CREATE TABLE IF NOT EXISTS `Tratamento` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -62,8 +66,8 @@ CREATE TABLE IF NOT EXISTS `Tratamento` (
     `gravidade` INT NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_paciente`) REFERENCES `Paciente`(`id`),
-    FOREIGN KEY (`id_medico`) REFERENCES `Medico`(`id`),
-)
+    FOREIGN KEY (`id_medico`) REFERENCES `Medico`(`id`)
+);
 
 CREATE TABLE IF NOT EXISTS `Transporte` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -73,4 +77,4 @@ CREATE TABLE IF NOT EXISTS `Transporte` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_paciente`) REFERENCES `Paciente`(`id`),
     FOREIGN KEY (`id_veiculo`) REFERENCES `Veiculo`(`id`)
-)
+);
