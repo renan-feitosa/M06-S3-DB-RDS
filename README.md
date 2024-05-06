@@ -5,7 +5,7 @@
 <br>
 
 ## 🎯 Objetivo
-
+&emsp;&emsp; O objetivo deste projeto é criar um banco de dados relacional para fazer a gestão de unidades de saúde, armazenando informações sobre pacientes, médicos, consultas e exames. Para isso, é necessário realizar deploy do banco de dados na nuvem, utilizando o serviço Amazon RDS e fazer a conexão com o MySQL Workbench para povoar o database e realizar consultas SQL.
 
 ### Tecnologias Utilizadas
 ![Amazon AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
