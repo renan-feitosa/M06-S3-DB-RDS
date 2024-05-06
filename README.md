@@ -97,6 +97,26 @@ Abaixo, segue a tela da instância criada no Amazon RDS.
 
 <br>
 
+## 📂 Estrutura do Projeto
+```bash
+├── src/
+│   ├── db.sql
+│   ├── inserts.sql
+│   ├── query.sql
+├── images/
+│   ├── header.png
+│   ├── footer.png
+│   ├── diagrama-logico.png
+│   ├── aws-rds-created.png
+│   ├── workbench-connection.png
+│   ├── workbench-output-create-table.png
+│   ├── workbech-output-inserting.png
+│   ├── workbench-output-query.png
+├── README.md
+```
+
+<br>
+
 <hr>
 
 <br>
