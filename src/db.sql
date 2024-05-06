@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Medico` (
 CREATE TABLE IF NOT EXISTS `Veiculo` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `modelo` VARCHAR(50) NOT NULL,
-    `placa` VARCHAR(50) NOT NULL,
+    `placa` VARCHAR(10) NOT NULL,
     `id_unidade` INT NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_unidade`) REFERENCES `Unidade_Saude`(`id`)
@@ -54,17 +54,18 @@ CREATE TABLE IF NOT EXISTS `Estoque` (
     `id_unidade` INT NOT NULL,
     `id_produto` INT NOT NULL,
     `quantidade` INT NOT NULL,
+    `quantidade_minima` INT NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_unidade`) REFERENCES `Unidade_Saude`(`id`),
     FOREIGN KEY (`id_produto`) REFERENCES `Produto`(`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Tratamento` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `id_paciente` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Consulta` (
+    `data_hora` DATETIME NOT NULL,
     `id_medico` INT NOT NULL,
+    `id_paciente` INT NOT NULL,
     `gravidade` INT NOT NULL,
-    PRIMARY KEY (`id`),
+    PRIMARY KEY (`data_hora`, `id_medico`),
     FOREIGN KEY (`id_paciente`) REFERENCES `Paciente`(`id`),
     FOREIGN KEY (`id_medico`) REFERENCES `Medico`(`id`)
 );
@@ -74,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `Transporte` (
     `id_paciente` INT NOT NULL,
     `id_veiculo` INT NOT NULL,
     `data` DATE NOT NULL,
+    `acompanhante` BOOLEAN NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_paciente`) REFERENCES `Paciente`(`id`),
     FOREIGN KEY (`id_veiculo`) REFERENCES `Veiculo`(`id`)
